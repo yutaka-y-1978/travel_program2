@@ -13,7 +13,7 @@ DISCOUNT_STANDARD_MEMBER = 5 # 割引適用人数（変更可）
 DISCOUNT_RATE = 0.1 # 割引率（変更可）
 AFTER_DISCOUNT_RATE = 1 - DISCOUNT_RATE # 割引率適用後の料金の割合（『割引率』に依存）
 
-show_plan(plans) # 旅行プランを表示する
+show(plans) # 旅行プランを表示する
 chosen_plan = select_plan(plans) # 旅行プランを選択し、入力する
-number_of_people = reserve_plan(chosen_plan) # プランを確認し、予約人数を入力する
-calculate_plan(chosen_plan, number_of_people) # 料金の計算を行う。人数によっては割引した料金になる
+number_of_people = reserve_member_count(chosen_plan) # プランを確認し、予約人数を入力する
+travel_expenses_calculate(chosen_plan, number_of_people) # 料金の計算を行う。人数によっては割引した料金になる

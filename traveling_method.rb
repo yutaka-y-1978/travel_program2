@@ -1,5 +1,5 @@
 # 旅行プランを表示する
-def show_plan(plans)
+def show(plans)
   puts "旅行プランを選択して下さい。"
   puts ""
   plans.each.with_index(FIRST_NUM) do |plan, i|
@@ -16,12 +16,11 @@ def select_plan(plans)
   break if (FIRST_NUM..LAST_NUM).include?(select_plan_num)
   puts "プランの番号である1〜3を入力して下さい。"
   end
-  chosen_plan_index = select_plan_num - FIRST_NUM
-  plans[chosen_plan_index - 1]
+  plans[select_plan_num - FIRST_NUM]
 end
 
 # プランを確認し、予約人数を入力する
-def reserve_plan(chosen_plan)
+def reserve_member_count(chosen_plan)
   puts <<~TXT
   #{chosen_plan[:destination]}ですね。
   何名で予約されますか？
@@ -37,7 +36,7 @@ def reserve_plan(chosen_plan)
 end
 
 # 料金の計算を行う。人数によっては割引した料金になる
-def calculate_plan(chosen_plan, number_of_people)
+def travel_expenses_calculate(chosen_plan, number_of_people)
   total_price = chosen_plan[:price] * number_of_people
   if number_of_people >= DISCOUNT_STANDARD_MEMBER
     puts "#{DISCOUNT_STANDARD_MEMBER}名以上ですので#{(DISCOUNT_RATE * 100).floor}%割引となります。"
